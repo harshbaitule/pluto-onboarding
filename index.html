@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#080808" />
+    <meta
+      name="description"
+      content="Pluto onboarding — build your future a little every day."
+    />
+    <title>Pluto — Start building</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Playfair+Display:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="onboarding-shell">
+      <section class="app-screen intro-screen is-active" data-screen="intro" aria-labelledby="hero-title">
+        <img class="brand" src="./pluto-logo.svg" alt="Pluto" width="94" height="31" />
+
+        <div class="coin-stage" aria-hidden="true">
+          <img
+            class="coin"
+            src="./roman-coin.png"
+            alt=""
+            width="1263"
+            height="1246"
+          />
+        </div>
+
+        <div class="hero-copy">
+          <h1 id="hero-title">Your future, built a<br />little every day.</h1>
+          <p>Effortless SIPs, streaks that keep you going,<br class="reference-break" /> and a life you’re proud to build.</p>
+          <button class="primary-action" id="start-building" type="button">Start Building</button>
+        </div>
+      </section>
+
+      <section
+        class="app-screen wizard-screen"
+        data-screen="wizard"
+        aria-hidden="true"
+        aria-labelledby="wizard-title"
+      >
+        <div class="progress-track" aria-label="Onboarding progress">
+          <span class="progress-step is-current" aria-hidden="true"></span>
+          <span class="progress-step" aria-hidden="true"></span>
+          <span class="progress-step" aria-hidden="true"></span>
+          <span class="progress-step" aria-hidden="true"></span>
+        </div>
+
+        <form class="wizard-content" id="wizard-form">
+          <header class="wizard-heading" id="wizard-heading">
+            <h1 id="wizard-title">How would you like to<br />build?</h1>
+            <p id="wizard-description">Choose the methods that will make showing up each month feel worthwhile.</p>
+          </header>
+
+          <fieldset class="option-list" id="option-list" aria-labelledby="wizard-title"></fieldset>
+          <p class="form-message" id="form-message" aria-live="polite"></p>
+          <button class="continue-action" id="continue-action" type="submit">Continue</button>
+        </form>
+      </section>
+
+      <section
+        class="app-screen goal-screen"
+        data-screen="goal"
+        aria-hidden="true"
+        aria-labelledby="goal-title"
+      >
+        <div class="progress-track" aria-label="Onboarding progress: step 2 of 4">
+          <span class="progress-step is-complete" aria-hidden="true"></span>
+          <span class="progress-step is-current" aria-hidden="true"></span>
+          <span class="progress-step" aria-hidden="true"></span>
+          <span class="progress-step" aria-hidden="true"></span>
+        </div>
+
+        <form class="goal-content" id="goal-form">
+          <header class="goal-heading">
+            <h1 id="goal-title">Pick your goal.</h1>
+            <p>A sustainable amount beats an<br />ambitious plan you can’t repeat.</p>
+          </header>
+
+          <div class="amount-control" id="amount-control">
+            <label class="sr-only" for="goal-amount">Target amount</label>
+            <div class="amount-editor">
+              <span class="amount-currency" aria-hidden="true">₹</span>
+              <input
+                id="goal-amount"
+                name="goal-amount"
+                type="text"
+                inputmode="numeric"
+                autocomplete="off"
+                value="15000"
+                aria-describedby="amount-instructions"
+              />
+            </div>
+            <p class="sr-only" id="amount-instructions">
+              Tap the amount to type an exact value, or activate the line below to use a slider.
+            </p>
+            <button
+              class="slider-trigger"
+              id="slider-trigger"
+              type="button"
+              aria-label="Adjust target amount with a slider"
+              aria-expanded="false"
+            >
+              <span></span>
+            </button>
+            <div class="amount-range-wrap" aria-hidden="true">
+              <input
+                class="amount-range"
+                id="amount-range"
+                type="range"
+                min="5000"
+                max="35000"
+                step="500"
+                value="15000"
+                tabindex="-1"
+                aria-label="Target amount slider"
+              />
+              <span class="range-dots" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div class="goal-fields">
+            <label class="field-group" for="duration">
+              <span>Duration</span>
+              <input id="duration" name="duration" type="text" value="6 months" />
+            </label>
+
+            <div class="field-group">
+              <span id="invest-day-label">Invest on</span>
+              <div class="custom-select" id="invest-day-select">
+                <input id="invest-day" name="invest-day" type="hidden" value="7" />
+                <button
+                  class="custom-select-trigger"
+                  id="invest-day-trigger"
+                  type="button"
+                  aria-labelledby="invest-day-label invest-day-value"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span id="invest-day-value">7th of every month</span>
+                  <span class="custom-select-chevron" aria-hidden="true"></span>
+                </button>
+                <div
+                  class="custom-select-menu"
+                  id="invest-day-menu"
+                  role="listbox"
+                  aria-labelledby="invest-day-label"
+                  aria-hidden="true"
+                >
+                  <button type="button" role="option" data-value="daily">Everyday</button>
+                  <button type="button" role="option" data-value="weekly">1st day of week</button>
+                  <button type="button" role="option" data-value="1">1st of every month</button>
+                  <button type="button" role="option" data-value="15">15th of every month</button>
+                </div>
+              </div>
+            </div>
+
+            <label class="field-group" for="investment-style">
+              <span>Investment style</span>
+              <input id="investment-style" name="investment-style" type="text" value="Balanced" readonly />
+            </label>
+          </div>
+
+          <output class="daily-result" id="daily-result" for="goal-amount duration invest-day">
+            <span>Daily contribution</span>
+            <strong id="daily-amount">₹500</strong>
+          </output>
+
+          <p class="goal-message" id="goal-message" aria-live="polite"></p>
+          <button class="continue-action goal-continue" type="submit">Continue</button>
+        </form>
+      </section>
+
+      <section
+        class="app-screen portfolio-screen"
+        data-screen="portfolio"
+        aria-hidden="true"
+        aria-labelledby="portfolio-title"
+      >
+        <div class="progress-track" aria-label="Onboarding progress: step 3 of 4">
+          <span class="progress-step is-complete" aria-hidden="true"></span>
+          <span class="progress-step is-complete" aria-hidden="true"></span>
+          <span class="progress-step is-current" aria-hidden="true"></span>
+          <span class="progress-step" aria-hidden="true"></span>
+        </div>
+
+        <button class="back-action" id="portfolio-back" type="button" aria-label="Go back to goal setup">
+          <span aria-hidden="true"></span>
+        </button>
+
+        <form class="portfolio-content" id="portfolio-form">
+          <header class="portfolio-heading">
+            <h1 id="portfolio-title">Setting up portfolio</h1>
+            <p>Bring your investments in one view by<br />adding your demat account.</p>
+          </header>
+
+          <div class="identity-fields">
+            <label class="field-group" for="profile-name">
+              <span>Name</span>
+              <input id="profile-name" name="profile-name" type="text" placeholder="eg. Harsh" />
+            </label>
+            <label class="field-group" for="profile-phone">
+              <span>Phone</span>
+              <input
+                id="profile-phone"
+                name="profile-phone"
+                type="tel"
+                inputmode="tel"
+                placeholder="eg. 918840*******"
+              />
+            </label>
+          </div>
+
+          <div class="portfolio-divider" aria-hidden="true"></div>
+
+          <div class="broker-options" aria-label="Choose an investment app">
+            <button class="broker-option" type="button" data-broker="zerodha" aria-pressed="false">
+              <span class="broker-icon zerodha-icon" aria-hidden="true"><span></span></span>
+              <span class="broker-copy">
+                <strong>Zerodha Kite</strong>
+                <span>Connect securely with Kite</span>
+              </span>
+              <span class="broker-chevron" aria-hidden="true"></span>
+            </button>
+            <button class="broker-option" type="button" data-broker="groww" aria-pressed="false">
+              <span class="broker-icon groww-icon" aria-hidden="true"><span></span></span>
+              <span class="broker-copy">
+                <strong>Groww</strong>
+                <span>Connect securely with Groww</span>
+              </span>
+              <span class="broker-chevron" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <button class="manual-entry-action" id="manual-entry-action" type="button">
+            <span>Enter Account details manually.</span>
+            <span class="manual-chevron" aria-hidden="true"></span>
+          </button>
+
+          <p class="portfolio-message" id="portfolio-message" aria-live="polite"></p>
+          <button class="continue-action portfolio-continue" type="submit">Skip this step</button>
+        </form>
+
+        <div class="manual-overlay" id="manual-overlay" aria-hidden="true">
+          <button class="manual-backdrop" type="button" aria-label="Close manual account details"></button>
+          <section
+            class="manual-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="manual-sheet-title"
+          >
+            <div class="sheet-handle" aria-hidden="true"></div>
+            <h2 class="sr-only" id="manual-sheet-title">Enter account details manually</h2>
+            <form class="manual-form" id="manual-form">
+              <fieldset class="depository-fieldset">
+                <legend>Depository</legend>
+                <div class="depository-options">
+                  <button class="depository-option is-selected" type="button" data-depository="CDSL">CDSL</button>
+                  <button class="depository-option" type="button" data-depository="NSDL">NSDL</button>
+                </div>
+              </fieldset>
+
+              <label class="manual-field" for="holder-name">
+                <span>Holder’s Name</span>
+                <input id="holder-name" name="holder-name" type="text" placeholder="Full name" />
+              </label>
+              <label class="manual-field" for="dp-id">
+                <span>DP ID / Depository participant ID</span>
+                <input id="dp-id" name="dp-id" type="text" placeholder="DP ID" />
+              </label>
+              <label class="manual-field" for="client-id">
+                <span>Client ID / Beneficiary ID</span>
+                <input id="client-id" name="client-id" type="text" placeholder="Client ID" />
+              </label>
+
+              <button class="manual-continue" type="submit">Continue</button>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section
+        class="app-screen welcome-screen"
+        data-screen="welcome"
+        aria-hidden="true"
+        aria-labelledby="welcome-title"
+      >
+        <div class="progress-track" aria-label="Onboarding progress: complete">
+          <span class="progress-step is-complete" aria-hidden="true"></span>
+          <span class="progress-step is-complete" aria-hidden="true"></span>
+          <span class="progress-step is-complete" aria-hidden="true"></span>
+          <span class="progress-step is-complete" aria-hidden="true"></span>
+        </div>
+
+        <div class="welcome-content">
+          <header class="welcome-heading">
+            <h1 id="welcome-title">Welcome to the club.</h1>
+            <p>Start and share your investment streak today!</p>
+          </header>
+
+          <section class="streak-card" aria-labelledby="streak-card-title">
+            <header class="streak-card-heading">
+              <strong id="streak-card-title">₹15,000/month</strong>
+              <span>Nov 2026</span>
+            </header>
+
+            <div class="calendar-layout">
+              <div class="calendar-area" aria-label="November 2026 investment calendar">
+                <div class="calendar-weekdays" aria-hidden="true">
+                  <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+                </div>
+                <div class="calendar-days">
+                  <span class="calendar-blank" aria-hidden="true"></span>
+                  <span class="calendar-blank" aria-hidden="true"></span>
+                  <span class="calendar-blank" aria-hidden="true"></span>
+                  <span class="calendar-blank" aria-hidden="true"></span>
+                  <span class="calendar-blank" aria-hidden="true"></span>
+                  <span class="calendar-day is-investment-day" aria-label="November 1, investment day">1</span>
+                  <span class="calendar-day">2</span>
+                  <span class="calendar-day">3</span><span class="calendar-day">4</span><span class="calendar-day">5</span><span class="calendar-day">6</span><span class="calendar-day">7</span><span class="calendar-day">8</span><span class="calendar-day">9</span>
+                  <span class="calendar-day">10</span><span class="calendar-day">11</span><span class="calendar-day">12</span><span class="calendar-day">13</span><span class="calendar-day">14</span><span class="calendar-day">15</span><span class="calendar-day">16</span>
+                  <span class="calendar-day">17</span><span class="calendar-day">18</span><span class="calendar-day">19</span><span class="calendar-day">20</span><span class="calendar-day">21</span><span class="calendar-day">22</span><span class="calendar-day">23</span>
+                  <span class="calendar-day">24</span><span class="calendar-day">25</span><span class="calendar-day">26</span><span class="calendar-day">27</span><span class="calendar-day">28</span><span class="calendar-day">29</span><span class="calendar-day">30</span>
+                </div>
+              </div>
+
+              <div class="streak-meter" aria-label="Streak progress: one investment day">
+                <div class="streak-meter-fill">
+                  <img src="./roman-coin.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <ul class="welcome-milestones" aria-label="Onboarding milestones">
+            <li class="milestone is-complete"><span class="milestone-check" aria-hidden="true"></span><span>Your goal is set.</span></li>
+            <li class="milestone is-complete"><span class="milestone-check" aria-hidden="true"></span><span>Your portfolio has a home.</span></li>
+            <li class="milestone is-pending" id="first-streak-milestone"><span class="milestone-check" aria-hidden="true"></span><span>Your first streak starts today.</span></li>
+          </ul>
+
+          <div class="welcome-actions">
+            <button class="dashboard-action" id="dashboard-action" type="button">Go to dashboard</button>
+            <button class="start-investing-action" id="start-investing-action" type="button">Start investing</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
